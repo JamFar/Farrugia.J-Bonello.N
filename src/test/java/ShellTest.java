@@ -40,7 +40,6 @@ public class ShellTest extends TestCase {
      */
     public void testAdd(){
         ShellClass test = new ShellClass();
-        assertEquals(5, test.add(3,2));
         assertEquals(4, test.add(2,2)); 
         assertEquals(0, test.add(0,0));
         assertEquals(3, test.add(1,2));        
