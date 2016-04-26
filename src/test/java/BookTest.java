@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+import com.mycompany.cps2002.farrugia.bonello.Book;
+import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
+import javafx.beans.binding.Bindings;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -43,7 +46,22 @@ public class BookTest {
     // @Test
     // public void hello() {}
     @Test
-    public void test(){
-        
+    public void yearOfPub_boundsTest(){
+        Book b = new Book();
+        try{
+            b.setYearOfPub(-1);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
+    @Test
+    public void edition_boundsTest(){
+        Book b = new Book();
+        try{
+            b.setEdition(-1);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
     }
 }
