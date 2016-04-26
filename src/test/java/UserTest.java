@@ -43,9 +43,4 @@ public class UserTest {
     //
     // @Test
     // public void hello() {}
-    @Test
-    public void testingGetterMethod(){
-        User user = new User(12);
-        assertEquals(12, user.getUserId());
-    }
 }
