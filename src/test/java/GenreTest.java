@@ -39,6 +39,8 @@ public class GenreTest {
     // public void hello() {}
     @Test
     public void simpleGenreTest(){
-        assertNotSame(Genre.genre.ACTION , Genre.genre.ADVENTURE);
+        Genre g = new Genre(Genre.genre.BIOGRAPHY);
+        assertEquals("BIOGRAPHY", g.toString());
+        assertEquals(Genre.genre.BIOGRAPHY, g.getGenre());
     }
 }

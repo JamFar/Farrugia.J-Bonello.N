@@ -7,8 +7,8 @@ package com.mycompany.cps2002.farrugia.bonello;
  */
 public class User {
     
-    static private int userCount = 0;
-    final private int idNum;    
+    static private int userCount = 0;   // this belongs to the class
+    final private int idNum;            // this belongs to the user
     
     /**
      * User constructor. Initialises a new User with a unique id.
