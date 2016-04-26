@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-import com.mycompany.cps2002.farrugia.bonello.User;
-import static junit.framework.Assert.assertEquals;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,9 +15,10 @@ import static org.junit.Assert.*;
  *
  * @author James
  */
-public class UserTest {
+public class BookTest {
     
-    public UserTest() {
+    public BookTest() {
+        super();
     }
     
     @BeforeClass
@@ -44,8 +43,7 @@ public class UserTest {
     // @Test
     // public void hello() {}
     @Test
-    public void testingGetterMethod(){
-        User user = new User(12);
-        assertEquals(12, user.getUserId());
+    public void test(){
+        
     }
 }
