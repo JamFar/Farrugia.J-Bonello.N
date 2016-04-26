@@ -43,4 +43,7 @@ public class UserTest {
     //
     // @Test
     // public void hello() {}
+    @Test
+    public void testingGetterMethod(){
+    }
 }
