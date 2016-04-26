@@ -38,10 +38,14 @@ public class UserTest {
     // @Test
     // public void hello() {}
     @Test
-    public void testingGetterMethod(){
+    public void uniqueIdTest(){
         User user = new User();
         assertEquals(0, user.getUserId());
         User user2 = new User();
         assertEquals(1, user2.getUserId());
+        User u1 = new User();
+        User u2 = new User();
+        User u3 = new User();
+        assertEquals(4, u3.getUserId());
     }
 }

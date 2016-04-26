@@ -60,12 +60,23 @@ public class BookTest {
     }
     
     @Test
-    public void loanDate_boundsTest(){
+    public void loanDate_boundsTest_largeYear(){
         Book b = new Book();
         try{
             b.setLoanDate(2020, 4, 4);
         }catch(Exception e){
             assertTrue(e instanceof OutOfBoundsException);
         }
+    }
+    @Test
+    public void loanDate_boundsTest_thisYear(){
+        Book b = new Book();
+        boolean exceptionThrown = false;
+        try{
+            b.setLoanDate(2016, 4, 4);
+        }catch(Exception e){
+            exceptionThrown = true;
+        }
+        assertFalse(exceptionThrown);
     }
 }

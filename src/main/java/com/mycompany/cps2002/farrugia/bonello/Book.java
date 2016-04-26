@@ -67,8 +67,10 @@ public class Book{
      * @throws OutOfBoundsException Thrown when either the year, month or day entered are unreasonable.
      */
     public void setLoanDate(int year, int month, int day) throws OutOfBoundsException{
-        int thisYear = Calendar.YEAR;
-        if(year >= 0 && year <= thisYear && month > 0 && month <= 12 && day > 0 && day <= 31){
+        
+        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+
+        if((year >= 0 && year <= thisYear) && (month >= 0 && month < 12) && (day > 0 && day <= 31)){
             GregorianCalendar date = new GregorianCalendar(year, month, day);
             this.loanDate = date;
         }else{
