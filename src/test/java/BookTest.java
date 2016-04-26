@@ -40,7 +40,7 @@ public class BookTest {
     // @Test
     // public void hello() {}
     @Test
-    public void yearOfPub_boundsTest(){
+    public void yearOfPub_boundsTest_tooSmall(){
         Book b = new Book();
         try{
             b.setYearOfPub(-1);
@@ -50,13 +50,47 @@ public class BookTest {
     }
     
     @Test
-    public void edition_boundsTest(){
+    public void yearOfPub_boundsTest_tooLarge(){
+        Book b = new Book();
+        try{
+            b.setYearOfPub(2023);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
+    @Test
+    public void yearOfPub_boundsTest_valid(){
+        Book b = new Book();
+        boolean exceptionThrown = false;
+        try{
+            b.setYearOfPub(2012);
+        }catch(Exception e){
+            exceptionThrown = true;
+        }
+        assertFalse(exceptionThrown);
+    }
+    
+    @Test
+    public void edition_boundsTest_tooSmall(){
         Book b = new Book();
         try{
             b.setEdition(-1);
         }catch(Exception e){
             assertTrue(e instanceof OutOfBoundsException);
         }
+    }
+    
+    @Test
+    public void edition_boundsTest_valid(){
+        Book b = new Book();
+        boolean exceptionThrown = false;
+        try{
+            b.setEdition(12);
+        }catch(Exception e){
+            exceptionThrown = true;
+        }
+        assertFalse(exceptionThrown);
     }
     
     @Test
@@ -78,5 +112,59 @@ public class BookTest {
             exceptionThrown = true;
         }
         assertFalse(exceptionThrown);
+    }
+    
+    @Test
+    public void loanDate_boundsTest_smallYear(){
+        Book b = new Book();
+        try{
+            b.setLoanDate(-1, 4, 4);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
+    @Test
+    public void loanDate_boundsTest_largeMonth(){
+        Book b = new Book();
+        boolean exceptionThrown = false;
+        try{
+            b.setLoanDate(2016, 12, 4);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
+    @Test
+    public void loanDate_boundsTest_smallMonth(){
+        Book b = new Book();
+        boolean exceptionThrown = false;
+        try{
+            b.setLoanDate(2016, -1, 4);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
+    @Test
+    public void loanDate_boundsTest_largeDay(){
+        Book b = new Book();
+        boolean exceptionThrown = false;
+        try{
+            b.setLoanDate(2016, 4, 34);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
+    @Test
+    public void loanDate_boundsTest_smallDay(){
+        Book b = new Book();
+        boolean exceptionThrown = false;
+        try{
+            b.setLoanDate(2016, 4, -1);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
     }
 }

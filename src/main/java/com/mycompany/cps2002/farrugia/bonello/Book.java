@@ -38,7 +38,8 @@ public class Book{
      * @throws OutOfBoundsException Thrown when the year entered is unreasonable.
      */
     public void setYearOfPub(int yop) throws OutOfBoundsException{
-        int thisYear = Calendar.YEAR;
+        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+        
         if(yop >= 0 && yop <= thisYear){
             this.yop = yop;
         }else{
