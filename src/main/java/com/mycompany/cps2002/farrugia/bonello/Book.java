@@ -11,12 +11,23 @@ import java.util.GregorianCalendar;
  */
 public class Book{
     
+    private static int bookCount = 0;
+    
+    private final int bookId;   // the book's unique identification number
     private Genre.genre genre;  // the book's genre
     private User loanedTo;      // the user the book is currently loaned to
     private int yop;            // the year of publication. Will be between year 0 and this year
     private int edition;        // the book's edition
     private ArrayList<GregorianCalendar> timeStamps; // the book's loan dates
     private boolean currentlyLoaned;        // is the book currently being loaned?
+    
+    /**
+     * Book constructor. Initialises book unique id and sets up timestamp arraylist.
+     */
+    public Book(){
+        this.bookId = bookCount++;
+        timeStamps = new ArrayList<GregorianCalendar>();
+    }
     
     /**
      * Sets the genre of the book.
