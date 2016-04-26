@@ -7,7 +7,7 @@ package com.mycompany.cps2002.farrugia.bonello;
 
 /**
  *
- * @author James
+ * @author Farrugia, Bonello
  */
 public class OutOfBoundsException extends Exception{
     

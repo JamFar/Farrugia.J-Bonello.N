@@ -6,7 +6,6 @@
 
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
-import javafx.beans.binding.Bindings;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author James
+ * @author Farrugia, Bonello
  */
 public class BookTest {
     

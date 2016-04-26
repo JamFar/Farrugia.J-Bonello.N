@@ -11,11 +11,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
- * @author James
+ * @author Farrugia, Bonello
  */
 public class UserTest {
     
@@ -47,5 +46,7 @@ public class UserTest {
     public void testingGetterMethod(){
         User user = new User();
         assertEquals(0, user.getUserId());
+        User user2 = new User();
+        assertEquals(1, user2.getUserId());
     }
 }
