@@ -45,5 +45,7 @@ public class UserTest {
     // public void hello() {}
     @Test
     public void testingGetterMethod(){
+        User user = new User();
+        assertEquals(0, user.getUserId());
     }
 }
