@@ -7,6 +7,9 @@ package com.mycompany.cps2002.farrugia.bonello;
  */
 public class Genre {
     
+    /**
+     * Potential book genres are enumerated here.
+     */
     public enum genre{
         FICTION,
         BIOGRAPHY,

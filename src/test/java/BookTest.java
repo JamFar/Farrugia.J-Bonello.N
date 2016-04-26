@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
@@ -59,6 +54,16 @@ public class BookTest {
         Book b = new Book();
         try{
             b.setEdition(-1);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
+    @Test
+    public void loanDate_boundsTest(){
+        Book b = new Book();
+        try{
+            b.setLoanDate(2020, 4, 4);
         }catch(Exception e){
             assertTrue(e instanceof OutOfBoundsException);
         }
