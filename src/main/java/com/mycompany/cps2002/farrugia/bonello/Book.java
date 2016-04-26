@@ -1,6 +1,7 @@
 
 package com.mycompany.cps2002.farrugia.bonello;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -11,10 +12,11 @@ import java.util.GregorianCalendar;
 public class Book{
     
     private Genre.genre genre;  // the book's genre
-    private User loanedTo;      // the user the book was loaned to
+    private User loanedTo;      // the user the book is currently loaned to
     private int yop;            // the year of publication. Will be between year 0 and this year
     private int edition;        // the book's edition
-    private GregorianCalendar loanDate; // the book's loan date
+    private ArrayList<GregorianCalendar> timeStamps; // the book's loan dates
+    private boolean currentlyLoaned;        // is the book currently being loaned?
     
     /**
      * Sets the genre of the book.
@@ -28,7 +30,7 @@ public class Book{
      * Sets the user that the book was loaned to.
      * @param loanedTo The user that the book was loaned to.
      */
-    public void setLoanedUser(User loanedTo){
+    public void setLoanUser(User loanedTo){
         this.loanedTo = loanedTo;
     }
     
@@ -73,10 +75,18 @@ public class Book{
 
         if((year >= 0 && year <= thisYear) && (month >= 0 && month < 12) && (day > 0 && day <= 31)){
             GregorianCalendar date = new GregorianCalendar(year, month, day);
-            this.loanDate = date;
+            this.timeStamps.add(date);
         }else{
             throw new OutOfBoundsException();
         }
+    }
+    
+    /**
+     * Sets the currently loaned boolean to "currentlyLoaned"
+     * @param currentlyLoaned true if the book is currently loaned, false otherwise.
+     */
+    public void setLoanedStatus(boolean currentlyLoaned){
+        this.currentlyLoaned = currentlyLoaned;
     }
 
     /**
@@ -112,11 +122,30 @@ public class Book{
     }
 
     /**
-     * Returns the date when the book was loaned.
-     * @return The loan date.
+     * Returns the all the dates when the book was loaned.
+     * @return The loan dates.
      */
-    public GregorianCalendar getLoanDate() {
-        return loanDate;
+    public ArrayList<GregorianCalendar> getTimeStamps() {
+        return timeStamps;
+    }
+    
+    /**
+     * Returns the very last date it was loaned.
+     * @return The latest date the book was loaned.
+     */
+    public GregorianCalendar getLatestTimeStamp(){
+        if(timeStamps.isEmpty()){
+            return null;
+        }else
+            return timeStamps.get(timeStamps.size()-1);
+    }
+    
+    /**
+     * Returns the status of the book.
+     * @return true if currently being loaned, false otherwise.
+     */
+    public boolean getLoanedStatus(){
+        return currentlyLoaned;
     }
     
     
