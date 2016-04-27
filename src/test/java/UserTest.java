@@ -84,4 +84,18 @@ public class UserTest {
         }catch(OutOfBoundsException e){    
         }
     }
+    
+    @Test
+    public void getAllLoanedTest(){
+            User user = new User();
+            Book b = new Book("Black Beauty");
+            user.loanBook(b);
+            Book b2 = new Book("Macbeth");
+            user.loanBook(b2);
+            assertEquals(2, user.getCurrentlyLoanedBooks().size()); 
+            assertEquals(2, user.getAllLoanedBooks().size());
+            user.returnBook(b2);
+            assertEquals(1, user.getCurrentlyLoanedBooks().size());
+            assertEquals(2, user.getAllLoanedBooks().size());
+    }
 }
