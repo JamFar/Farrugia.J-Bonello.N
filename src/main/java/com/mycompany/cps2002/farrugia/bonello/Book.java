@@ -31,7 +31,7 @@ public class Book{
         this.bookId = bookCount++;
         timeStamps = new ArrayList<GregorianCalendar>();
         currentlyLoaned = false;
-        genre = new Genre();
+        genre = Genre.UNKNOWN;
     }
     
     /**

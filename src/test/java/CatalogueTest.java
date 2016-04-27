@@ -45,16 +45,16 @@ public class CatalogueTest {
         try {
             Catalogue c = new Catalogue();
             Book b1 = new Book("The Sorcerer's Enigma");
-            b1.setGenre(new Genre(Genre.genre.ADVENTURE));
+            b1.setGenre(Genre.ADVENTURE);
             b1.setYearOfPub(1890);
             Book b2 = new Book("Moby Dick");
-            b2.setGenre(new Genre(Genre.genre.ACTION));
+            b2.setGenre(Genre.ACTION);
             b2.setYearOfPub(1890);
             Book b3 = new Book("The Book of Love");
-            b3.setGenre(new Genre(Genre.genre.BIOGRAPHY));
+            b3.setGenre(Genre.BIOGRAPHY);
             b3.setYearOfPub(2016);
             Book b4 = new Book("Life of Pi");
-            b4.setGenre(new Genre(Genre.genre.BIOGRAPHY));
+            b4.setGenre(Genre.BIOGRAPHY);
             b4.setYearOfPub(2014);
             c.addBook(b1);
             c.addBook(b2);
@@ -63,9 +63,9 @@ public class CatalogueTest {
             assertEquals(1, c.searchByTitle("Sorcerer").size());
             assertEquals(2, c.searchByTitle("of").size());
             assertEquals(0, c.searchByTitle("something").size());
-            assertEquals(2, c.searchByGenre(new Genre(Genre.genre.BIOGRAPHY)).size());
-            assertEquals(1, c.searchByGenre(new Genre(Genre.genre.ADVENTURE)).size());
-            assertEquals(0, c.searchByGenre(new Genre(Genre.genre.UNKNOWN)).size());
+            assertEquals(2, c.searchByGenre(Genre.BIOGRAPHY).size());
+            assertEquals(1, c.searchByGenre(Genre.ADVENTURE).size());
+            assertEquals(0, c.searchByGenre(Genre.UNKNOWN).size());
             assertEquals(2, c.searchByYOP(1890).size());
             assertEquals(1, c.searchByYOP(2016).size());
             assertEquals(0, c.searchByYOP(12).size());
