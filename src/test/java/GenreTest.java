@@ -38,7 +38,17 @@ public class GenreTest {
     // @Test
     // public void hello() {}
     @Test
-    public void simpleGenreTest(){
+    public void toStringTest(){
         assertEquals("BIOGRAPHY", Genre.BIOGRAPHY.toString());
+    }
+    
+    @Test
+    public void valueOfTest(){
+        assertEquals(Genre.ACTION, Genre.valueOf("ACTION"));
+    }
+    
+    @Test
+    public void valuesTest(){
+        assertEquals(Genre.FICTION, Genre.values()[0]);
     }
 }
