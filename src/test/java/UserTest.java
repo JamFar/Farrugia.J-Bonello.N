@@ -41,19 +41,21 @@ public class UserTest {
     // public void hello() {}
     @Test
     public void uniqueIdTest(){
-        User user = new User();
-        assertEquals(0, user.getUserId());
-        User user2 = new User();
-        assertEquals(1, user2.getUserId());
+        User u0 = new User();
         User u1 = new User();
         User u2 = new User();
         User u3 = new User();
-        assertEquals(4, u3.getUserId());
+        User u4 = new User();
+        Assert.assertFalse(u0.getUserId() == u1.getUserId());
+        Assert.assertFalse(u1.getUserId() == u2.getUserId());
+        Assert.assertFalse(u2.getUserId() == u3.getUserId());
+        Assert.assertFalse(u3.getUserId() == u4.getUserId());
     }
     
     @Test
     public void loanTest(){
         User user = new User();
+        User user2 = new User();
         Book b1 = new Book();
         user.loanBook(b1);
         Assert.assertTrue(user.getCurrentlyLoanedBooks().contains(b1));
@@ -64,5 +66,7 @@ public class UserTest {
         user.loanBook(b1);
         user.loanBook(b1);
         Assert.assertTrue(user.getCurrentlyLoanedBooks().size() == 1);
+        user2.loanBook(b1);
+        Assert.assertTrue(user2.getCurrentlyLoanedBooks().isEmpty());
     }
 }

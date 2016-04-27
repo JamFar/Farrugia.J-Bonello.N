@@ -21,6 +21,7 @@ public class User {
         idNum = userCount++;  // create a unique id number for each user (cannot be changed)
         currentlyLoanedBooks = new ArrayList<Book>();
         allLoanedBooks = new ArrayList<Book>();
+        System.out.println("Creating user with id "+idNum);
     }
 
     /**
@@ -54,30 +55,33 @@ public class User {
      *
      * @param book The book to be loaned.
      */
-    public void loanBook(Book book){
+    public void loanBook(Book book) {
+        if (!this.currentlyLoanedBooks.contains(book)) {
+            if (this.currentlyLoanedBooks.size() < 3) {
+                if (!book.getLoanedStatus()) {
 
-        if (this.currentlyLoanedBooks.size() < 3) {
-            if (!book.getLoanedStatus()) {
+                    try {
+                        int year = Calendar.getInstance().get(Calendar.YEAR);
+                        int month = Calendar.getInstance().get(Calendar.MONTH);
+                        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
-                try {
-                    int year = Calendar.getInstance().get(Calendar.YEAR);
-                    int month = Calendar.getInstance().get(Calendar.MONTH);
-                    int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+                        book.setLoanDate(year, month, day);
+                        book.setLoanUser(this);
+                        book.setLoanedStatus(true);
+                        this.currentlyLoanedBooks.add(book);
+                        this.allLoanedBooks.add(book);
 
-                    book.setLoanDate(year, month, day);
-                    book.setLoanUser(this);
-                    book.setLoanedStatus(true);
-                    this.currentlyLoanedBooks.add(book);
-                    this.allLoanedBooks.add(book);
-                    
-                } catch (OutOfBoundsException e) {
-                    System.err.println("Error in extracting current date.");
+                    } catch (OutOfBoundsException e) {
+                        System.err.println("Error in extracting current date.");
+                    }
+                } else {
+                    System.err.println("Book is already loaned out.");
                 }
             } else {
-                System.err.println("Book is already loaned out.");
+                System.err.println("User exceeds maximum loan allowance of 3 books.");
             }
         } else {
-            System.err.println("User exceeds maximum loan allowance of 3 books.");
+            System.err.println("User is already currently loaning this book.");
         }
     }
 
