@@ -69,6 +69,11 @@ public class UserTest {
         Assert.assertTrue(user.getCurrentlyLoanedBooks().size() == 1);
         user2.loanBook(b1);
         Assert.assertTrue(user2.getCurrentlyLoanedBooks().isEmpty());
+        Book b2 = new Book("Some Book");
+        user2.loanBook(b2);
+        Assert.assertEquals(1, user2.getCurrentlyLoanedBooks().size());
+        user2.loanBook(b2);
+        Assert.assertEquals(1, user2.getCurrentlyLoanedBooks().size());
     }
     
     @Test
