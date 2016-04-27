@@ -18,7 +18,7 @@ public class Book{
     private User loanedTo;      // the user the book is currently loaned to
     private int yop;            // the year of publication. Will be between year 0 and this year
     private int edition;        // the book's edition
-    private ArrayList<GregorianCalendar> timeStamps; // the book's loan dates
+    private final ArrayList<GregorianCalendar> timeStamps; // the book's loan dates
     private boolean currentlyLoaned;        // is the book currently being loaned?
     
     /**

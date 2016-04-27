@@ -1,6 +1,5 @@
 
 import com.mycompany.cps2002.farrugia.bonello.Book;
-import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
 import com.mycompany.cps2002.farrugia.bonello.User;
 import static junit.framework.Assert.assertEquals;
 import org.junit.After;
