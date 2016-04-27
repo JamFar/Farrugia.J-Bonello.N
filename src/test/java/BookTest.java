@@ -41,7 +41,7 @@ public class BookTest {
     // public void hello() {}
     @Test
     public void yearOfPub_boundsTest_tooSmall(){
-        Book b = new Book();
+        Book b = new Book("Trial by Error");
         try{
             b.setYearOfPub(-1);
         }catch(Exception e){
@@ -51,7 +51,7 @@ public class BookTest {
     
     @Test
     public void yearOfPub_boundsTest_tooLarge(){
-        Book b = new Book();
+        Book b = new Book("Computer Science Made Easy (yeah right)");
         try{
             b.setYearOfPub(2023);
         }catch(Exception e){
@@ -61,7 +61,7 @@ public class BookTest {
     
     @Test
     public void yearOfPub_boundsTest_valid(){
-        Book b = new Book();
+        Book b = new Book("Harry Potter");
         boolean exceptionThrown = false;
         try{
             b.setYearOfPub(2012);
@@ -73,7 +73,7 @@ public class BookTest {
     
     @Test
     public void edition_boundsTest_tooSmall(){
-        Book b = new Book();
+        Book b = new Book("The Hunger Games");
         try{
             b.setEdition(-1);
         }catch(Exception e){
@@ -83,7 +83,7 @@ public class BookTest {
     
     @Test
     public void edition_boundsTest_valid(){
-        Book b = new Book();
+        Book b = new Book("The Help");
         boolean exceptionThrown = false;
         try{
             b.setEdition(12);
@@ -95,7 +95,7 @@ public class BookTest {
     
     @Test
     public void loanDate_boundsTest_largeYear(){
-        Book b = new Book();
+        Book b = new Book("The Railway Children");
         try{
             b.setLoanDate(2020, 4, 4);
         }catch(Exception e){
@@ -104,7 +104,7 @@ public class BookTest {
     }
     @Test
     public void loanDate_boundsTest_thisYear(){
-        Book b = new Book();
+        Book b = new Book("The Silmarillion");
         boolean exceptionThrown = false;
         try{
             b.setLoanDate(2016, 4, 4);
@@ -116,7 +116,7 @@ public class BookTest {
     
     @Test
     public void loanDate_boundsTest_smallYear(){
-        Book b = new Book();
+        Book b = new Book("The Treasure Island");
         try{
             b.setLoanDate(-1, 4, 4);
         }catch(Exception e){
@@ -126,7 +126,7 @@ public class BookTest {
     
     @Test
     public void loanDate_boundsTest_largeMonth(){
-        Book b = new Book();
+        Book b = new Book("The Mysterious Skull");
         boolean exceptionThrown = false;
         try{
             b.setLoanDate(2016, 12, 4);
@@ -137,7 +137,7 @@ public class BookTest {
     
     @Test
     public void loanDate_boundsTest_smallMonth(){
-        Book b = new Book();
+        Book b = new Book("The Invisible Man");
         boolean exceptionThrown = false;
         try{
             b.setLoanDate(2016, -1, 4);
@@ -148,7 +148,7 @@ public class BookTest {
     
     @Test
     public void loanDate_boundsTest_largeDay(){
-        Book b = new Book();
+        Book b = new Book("The Headless Horseman");
         boolean exceptionThrown = false;
         try{
             b.setLoanDate(2016, 4, 34);
@@ -159,7 +159,7 @@ public class BookTest {
     
     @Test
     public void loanDate_boundsTest_smallDay(){
-        Book b = new Book();
+        Book b = new Book("Lord of the Rings");
         boolean exceptionThrown = false;
         try{
             b.setLoanDate(2016, 4, -1);

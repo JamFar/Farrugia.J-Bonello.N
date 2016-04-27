@@ -57,7 +57,7 @@ public class UserTest {
     public void loanTest(){
         User user = new User();
         User user2 = new User();
-        Book b1 = new Book();
+        Book b1 = new Book("The Death of Dr. Larry");
         user.loanBook(b1);
         Assert.assertTrue(user.getCurrentlyLoanedBooks().contains(b1));
         user.returnBook(b1);
@@ -75,10 +75,10 @@ public class UserTest {
     public void overdueTest(){
         try{
             User user = new User();
-            Book b = new Book();
+            Book b = new Book("Black Beauty");
             user.loanBook(b);
             b.setLoanDate(1990, 1, 1);
-            Book b2 = new Book();
+            Book b2 = new Book("Macbeth");
             user.loanBook(b2);
             assertEquals(1, user.getCurrentlyLoanedBooks().size());    // he only has 1 book (b1) since b1 is overdue, b2 cannot be loaned.
         }catch(OutOfBoundsException e){    

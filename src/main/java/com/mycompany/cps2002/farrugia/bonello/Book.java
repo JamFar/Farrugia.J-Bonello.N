@@ -14,6 +14,7 @@ public class Book{
     private static int bookCount = 0;
     
     private final int bookId;   // the book's unique identification number
+    private final String title;
     private Genre genre;  // the book's genre
     private User loanedTo;      // the user the book is currently loaned to
     private int yop;            // the year of publication. Will be between year 0 and this year
@@ -23,8 +24,10 @@ public class Book{
     
     /**
      * Book constructor. Initialises book unique id and sets up timestamp array list.
+     * @param title The title of the book.
      */
-    public Book(){
+    public Book(String title){
+        this.title = title;
         this.bookId = bookCount++;
         timeStamps = new ArrayList<GregorianCalendar>();
         currentlyLoaned = false;
@@ -132,6 +135,14 @@ public class Book{
      */
     public int getEdition() {
         return edition;
+    }
+
+    /**
+     * Returns the title of the book.
+     * @return The title.
+     */
+    public String getTitle() {
+        return title;
     }
 
     /**
