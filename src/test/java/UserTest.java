@@ -1,8 +1,11 @@
 
+import com.mycompany.cps2002.farrugia.bonello.Book;
+import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
 import com.mycompany.cps2002.farrugia.bonello.User;
 import static junit.framework.Assert.assertEquals;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -47,5 +50,20 @@ public class UserTest {
         User u2 = new User();
         User u3 = new User();
         assertEquals(4, u3.getUserId());
+    }
+    
+    @Test
+    public void loanTest(){
+        User user = new User();
+        Book b1 = new Book();
+        user.loanBook(b1);
+        Assert.assertTrue(user.getCurrentlyLoanedBooks().contains(b1));
+        user.returnBook(b1);
+        Assert.assertTrue(user.getCurrentlyLoanedBooks().isEmpty());
+        user.returnBook(b1);
+        Assert.assertTrue(user.getCurrentlyLoanedBooks().isEmpty());
+        user.loanBook(b1);
+        user.loanBook(b1);
+        Assert.assertTrue(user.getCurrentlyLoanedBooks().size() == 1);
     }
 }

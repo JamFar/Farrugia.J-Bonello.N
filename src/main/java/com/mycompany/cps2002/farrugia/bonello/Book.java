@@ -14,7 +14,7 @@ public class Book{
     private static int bookCount = 0;
     
     private final int bookId;   // the book's unique identification number
-    private Genre.genre genre;  // the book's genre
+    private Genre genre;  // the book's genre
     private User loanedTo;      // the user the book is currently loaned to
     private int yop;            // the year of publication. Will be between year 0 and this year
     private int edition;        // the book's edition
@@ -22,18 +22,20 @@ public class Book{
     private boolean currentlyLoaned;        // is the book currently being loaned?
     
     /**
-     * Book constructor. Initialises book unique id and sets up timestamp arraylist.
+     * Book constructor. Initialises book unique id and sets up timestamp array list.
      */
     public Book(){
         this.bookId = bookCount++;
         timeStamps = new ArrayList<GregorianCalendar>();
+        currentlyLoaned = false;
+        genre = new Genre();
     }
     
     /**
      * Sets the genre of the book.
      * @param genre The genre/category of the book.
      */
-    public void setGenre(Genre.genre genre){
+    public void setGenre(Genre genre){
         this.genre = genre;
     }
     
@@ -104,7 +106,7 @@ public class Book{
      * Returns the genre of the book.
      * @return The genre.
      */
-    public Genre.genre getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
