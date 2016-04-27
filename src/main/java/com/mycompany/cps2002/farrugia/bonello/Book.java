@@ -61,7 +61,7 @@ public class Book{
         if(yop >= 0 && yop <= thisYear){
             this.yop = yop;
         }else{
-            throw new OutOfBoundsException(0, thisYear);
+            throw new OutOfBoundsException();
         }
     }
     
@@ -74,7 +74,7 @@ public class Book{
         if(edition >= 0){
             this.edition = edition;
         }else{
-            throw new OutOfBoundsException(true, 0);
+            throw new OutOfBoundsException();
         }
     }
     
