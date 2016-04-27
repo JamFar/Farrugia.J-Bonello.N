@@ -38,16 +38,8 @@ public class User {
         return currentlyLoanedBooks;
     }
 
-    public void setCurrentlyLoanedBooks(ArrayList<Book> currentlyLoanedBooks) {
-        this.currentlyLoanedBooks = currentlyLoanedBooks;
-    }
-
     public ArrayList<Book> getAllLoanedBooks() {
         return allLoanedBooks;
-    }
-
-    public void setAllLoanedBooks(ArrayList<Book> allLoanedBooks) {
-        this.allLoanedBooks = allLoanedBooks;
     }
 
     /**
