@@ -2,6 +2,8 @@ package com.mycompany.cps2002.farrugia.bonello;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+import org.joda.time.Days;
 
 /**
  *
@@ -21,7 +23,6 @@ public class User {
         idNum = userCount++;  // create a unique id number for each user (cannot be changed)
         currentlyLoanedBooks = new ArrayList<Book>();
         allLoanedBooks = new ArrayList<Book>();
-        System.out.println("Creating user with id "+idNum);
     }
 
     /**
@@ -56,32 +57,36 @@ public class User {
      * @param book The book to be loaned.
      */
     public void loanBook(Book book) {
-        if (!this.currentlyLoanedBooks.contains(book)) {
-            if (this.currentlyLoanedBooks.size() < 3) {
-                if (!book.getLoanedStatus()) {
+        if (this.getOverdue().isEmpty()) {
+            if (!this.currentlyLoanedBooks.contains(book)) {
+                if (this.currentlyLoanedBooks.size() < 3) {
+                    if (!book.getLoanedStatus()) {
 
-                    try {
-                        int year = Calendar.getInstance().get(Calendar.YEAR);
-                        int month = Calendar.getInstance().get(Calendar.MONTH);
-                        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+                        try {
+                            int year = Calendar.getInstance().get(Calendar.YEAR);
+                            int month = Calendar.getInstance().get(Calendar.MONTH);
+                            int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
-                        book.setLoanDate(year, month, day);
-                        book.setLoanUser(this);
-                        book.setLoanedStatus(true);
-                        this.currentlyLoanedBooks.add(book);
-                        this.allLoanedBooks.add(book);
+                            book.setLoanDate(year, month, day);
+                            book.setLoanUser(this);
+                            book.setLoanedStatus(true);
+                            this.currentlyLoanedBooks.add(book);
+                            this.allLoanedBooks.add(book);
 
-                    } catch (OutOfBoundsException e) {
-                        System.err.println("Error in extracting current date.");
+                        } catch (OutOfBoundsException e) {
+                            System.err.println("Error in extracting current date.");
+                        }
+                    } else {
+                        System.err.println("Book is already loaned out.");
                     }
                 } else {
-                    System.err.println("Book is already loaned out.");
+                    System.err.println("User exceeds maximum loan allowance of 3 books.");
                 }
             } else {
-                System.err.println("User exceeds maximum loan allowance of 3 books.");
+                System.err.println("User is already currently loaning this book.");
             }
         } else {
-            System.err.println("User is already currently loaning this book.");
+            System.err.println("User has overdue books in possession.");
         }
     }
 
@@ -100,6 +105,22 @@ public class User {
         } else {
             System.err.println("User does not currently have this book.");
         }
+    }
+
+    /**
+     * From the user's book list, will detect and return those books that are
+     * overdue.
+     *
+     * @return A list of overdue books in the user's possession.
+     */
+    public ArrayList<Book> getOverdue() {
+        ArrayList<Book> overdueBooks = new ArrayList<Book>();
+        for (Book book : currentlyLoanedBooks) {
+            if ((System.currentTimeMillis() - book.getLatestTimeStamp().getTimeInMillis()) / 1000 > 2419200) {
+                overdueBooks.add(book);
+            }
+        }
+        return overdueBooks;
     }
 
 }

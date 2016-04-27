@@ -1,5 +1,6 @@
 
 import com.mycompany.cps2002.farrugia.bonello.Book;
+import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
 import com.mycompany.cps2002.farrugia.bonello.User;
 import static junit.framework.Assert.assertEquals;
 import org.junit.After;
@@ -68,5 +69,19 @@ public class UserTest {
         Assert.assertTrue(user.getCurrentlyLoanedBooks().size() == 1);
         user2.loanBook(b1);
         Assert.assertTrue(user2.getCurrentlyLoanedBooks().isEmpty());
+    }
+    
+    @Test
+    public void overdueTest(){
+        try{
+            User user = new User();
+            Book b = new Book();
+            user.loanBook(b);
+            b.setLoanDate(1990, 1, 1);
+            Book b2 = new Book();
+            user.loanBook(b2);
+            assertEquals(1, user.getCurrentlyLoanedBooks().size());    // he only has 1 book (b1) since b1 is overdue, b2 cannot be loaned.
+        }catch(OutOfBoundsException e){    
+        }
     }
 }
