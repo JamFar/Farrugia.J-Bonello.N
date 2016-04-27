@@ -73,4 +73,18 @@ public class CatalogueTest {
 
         }
     }
+    
+    @Test
+    public void getAllBooksTest(){
+        Catalogue c = new Catalogue();
+        Book b1 = new Book("Book 1");
+        Book b2 = new Book("Book 2");
+        Book b3 = new Book("Book 3");
+        Book b4 = new Book("Book 4");
+        c.addBook(b1);
+        c.addBook(b2);
+        c.addBook(b3);
+        c.addBook(b4);
+        assertEquals(4, c.getAllBooks().size());
+    }
 }
