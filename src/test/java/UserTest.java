@@ -74,6 +74,25 @@ public class UserTest {
         Assert.assertEquals(1, user2.getCurrentlyLoanedBooks().size());
         user2.loanBook(b2);
         Assert.assertEquals(1, user2.getCurrentlyLoanedBooks().size());
+        
+        User u3 = new User();
+        Book b3 = new Book("Another Book");
+        u3.loanBook(b3);
+        u3.loanBook(b3);
+        Assert.assertEquals(1, u3.getCurrentlyLoanedBooks().size());
+        try{
+            b3.setLoanDate(1990, 1, 1);
+        }catch(OutOfBoundsException e){}
+        u3.loanBook(b1);
+        Assert.assertEquals(1, u3.getCurrentlyLoanedBooks().size());
+        
+        Book b_3 = new Book("asdasd");
+        user.loanBook(b1);
+        user.loanBook(b2);
+        user.loanBook(b_3);
+        Book b4 = new Book("B4");
+        user.loanBook(b4);
+        Assert.assertEquals(3, user.getCurrentlyLoanedBooks().size());
     }
     
     @Test
