@@ -56,8 +56,4 @@ public class Library {
     public ArrayList<User> getUsers(){
         return users;
     }
-    public ArrayList<User> getUsers(){
-        return users;
-    }
-    
 }
