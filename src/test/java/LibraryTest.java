@@ -2,6 +2,7 @@
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.Library;
 import com.mycompany.cps2002.farrugia.bonello.User;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -107,5 +108,28 @@ public class LibraryTest {
         assertEquals(0, u1.getCurrentlyLoanedBooks().size());
         l.returnBook(b1);
         assertEquals(0, u1.getCurrentlyLoanedBooks().size());
+    }
+    @Test
+    public void removeUserTest(){
+        Library l = new Library();
+        User u1 = new User();
+        User u2 = new User();
+        User u3 = new User();
+        Book b1 = new Book("Book 1");
+        Book b2 = new Book("Book 2");
+        l.getCatalogue().addBook(b1);
+        l.getCatalogue().addBook(b2);
+        l.addUser(u1);
+        l.addUser(u2);
+        ArrayList<User> users= l.getUsers();
+        assertEquals(users.size(),2);
+        l.removeUser(u3);
+        assertEquals(users.size(),2);
+        l.removeUser(u2);
+        assertEquals(users.size(),1);
+        l.removeUser(u2);
+        assertEquals(users.size(),1);
+        l.removeUser(u1);
+        assertEquals(users.size(),0);
     }
 }
