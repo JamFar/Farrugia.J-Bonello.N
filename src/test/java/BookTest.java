@@ -1,6 +1,7 @@
 
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
+import com.mycompany.cps2002.farrugia.bonello.User;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -163,6 +164,27 @@ public class BookTest {
         boolean exceptionThrown = false;
         try{
             b.setLoanDate(2016, 4, -1);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
+    @Test
+    public void getEdition_correct(){
+        Book b = new Book("The Maze Runner");
+        try{
+            b.setEdition(1);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+        assertEquals(b.getEdition(),1);
+    }
+    
+    @Test
+    public void getEdition_negative(){
+        Book b = new Book("The Maze Runner");
+        try{
+            b.setEdition(-21);
         }catch(Exception e){
             assertTrue(e instanceof OutOfBoundsException);
         }
