@@ -219,12 +219,12 @@ public class BookTest {
            User u1 = new User();
            User u2 = new User();
            b.setLoanUser(u1);
+           assertEquals(Book.format(b.getLatestTimeStamp()), null);
            b.setLoanDate(2016, 10, 10);
            assertEquals(b.getTimeStamps().size(),1);
            assertEquals(Book.format(b.getLatestTimeStamp()),"10 Nov 2016");
            b.setLoanUser(u2);
            b.setLoanDate(2016, 11, 10);
-           assertEquals(b.getTimeStamps().size(),2);
            assertEquals(Book.format(b.getLatestTimeStamp()),"10 Dec 2016");
            assertEquals(b.getTimeStamps().size(),2);
         }catch(Exception e){

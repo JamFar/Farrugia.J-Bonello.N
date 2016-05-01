@@ -6,6 +6,7 @@ import static junit.framework.Assert.assertEquals;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -55,6 +56,7 @@ public class UserTest {
     
     @Test
     public void loanTest(){
+        System.out.println("EOF");
         User user = new User();
         User user2 = new User();
         Book b1 = new Book("The Death of Dr. Larry");
@@ -97,6 +99,24 @@ public class UserTest {
         Book b4 = new Book("B4");
         user.loanBook(b4);
         Assert.assertEquals(3, user.getCurrentlyLoanedBooks().size());
+        
+        //Give user 4 books
+        Book book1 = new Book("abcd");
+        Book book2 = new Book("abcde");
+        Book book3 = new Book("abcdef");
+        Book book4 = new Book("abcdefg");
+        Book book5 = new Book("abcdefgh");
+        user.loanBook(book1);
+        try{
+            book1.setLoanDate(1, 111, 222);
+        }catch(OutOfBoundsException e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+        user.loanBook(book2);
+        user.loanBook(book3);
+        user.loanBook(book4);
+        user.loanBook(book5);
+        assertEquals(4,user.getAllLoanedBooks().size());
     }
     
     @Test
