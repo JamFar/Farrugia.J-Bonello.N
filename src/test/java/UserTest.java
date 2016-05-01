@@ -56,7 +56,6 @@ public class UserTest {
     
     @Test
     public void loanTest(){
-        System.out.println("EOF");
         User user = new User();
         User user2 = new User();
         Book b1 = new Book("The Death of Dr. Larry");

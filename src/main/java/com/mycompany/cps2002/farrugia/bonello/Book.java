@@ -164,18 +164,6 @@ public class Book{
         }else
             return timeStamps.get(timeStamps.size()-1);
     }
-    /*
-    Converts a GregorianCalendar value into one readable through SimpleDateFormat
-    Only used for testing purposes
-    */
-    public static String format(GregorianCalendar calendar){
-        
-            SimpleDateFormat fmt = new SimpleDateFormat("dd MMM yyyy");
-            fmt.setCalendar(calendar);
-            String dateFormatted = fmt.format(calendar.getTime());
-            return dateFormatted;
-           
-}
     
     /**
      * Returns the status of the book.

@@ -2,6 +2,8 @@
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
 import com.mycompany.cps2002.farrugia.bonello.User;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -212,42 +214,33 @@ public class BookTest {
     
     @Test
     public void getTimeStamps_test(){
-        System.out.println("RUNNING GETTIMPESTAMPS");
         Book b = new Book("Programming for dummies");
         try{
            Assert.assertTrue(b.getTimeStamps().isEmpty());
            User u1 = new User();
            User u2 = new User();
            b.setLoanUser(u1);
-           assertEquals(Book.format(b.getLatestTimeStamp()), null);
+           
+           SimpleDateFormat fmt = new SimpleDateFormat("dd MMM yyyy");
+           fmt.setCalendar(b.getLatestTimeStamp());
+           String dateFormatted = fmt.format(b.getLatestTimeStamp().getTime());
+           assertEquals(dateFormatted, null);
            b.setLoanDate(2016, 10, 10);
+           
+           fmt = new SimpleDateFormat("dd MMM yyyy");
+           fmt.setCalendar(b.getLatestTimeStamp());
+           dateFormatted = fmt.format(b.getLatestTimeStamp().getTime());
            assertEquals(b.getTimeStamps().size(),1);
-           assertEquals(Book.format(b.getLatestTimeStamp()),"10 Nov 2016");
+           assertEquals(dateFormatted,"10 Nov 2016");
            b.setLoanUser(u2);
            b.setLoanDate(2016, 11, 10);
-           assertEquals(Book.format(b.getLatestTimeStamp()),"10 Dec 2016");
+           
+           fmt = new SimpleDateFormat("dd MMM yyyy");
+           fmt.setCalendar(b.getLatestTimeStamp());
+           dateFormatted = fmt.format(b.getLatestTimeStamp().getTime());
+           assertEquals(dateFormatted,"10 Dec 2016");
            assertEquals(b.getTimeStamps().size(),2);
         }catch(Exception e){
-        }
-    }
-    
-    @Test
-    public void format_test_success(){
-        Book b = new Book("Format tests");
-        try{
-            b.setLoanDate(2017, 11, 10);
-            assertEquals(b.format(b.getLatestTimeStamp()),"10 Dec 2017");
-        }catch(Exception e){
-            assertTrue(e instanceof OutOfBoundsException);
-        }
-    }
-    @Test
-    public void format_test_fail(){
-        Book b1 = new Book("Empty setLoanDate");
-        try{
-            Book.format(b1.getLatestTimeStamp());
-        }catch(Exception e){
-            assertTrue(e instanceof NullPointerException);
         }
     }
 }
