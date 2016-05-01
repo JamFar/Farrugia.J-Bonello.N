@@ -1,6 +1,7 @@
 //Testing Connection
 package com.mycompany.cps2002.farrugia.bonello;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -163,6 +164,16 @@ public class Book{
         }else
             return timeStamps.get(timeStamps.size()-1);
     }
+    /*
+    Converts a GregorianCalendar value into one readable through SimpleDateFormat
+    Only used for testing purposes
+    */
+    public static String format(GregorianCalendar calendar){
+        SimpleDateFormat fmt = new SimpleDateFormat("dd MMM yyyy");
+        fmt.setCalendar(calendar);
+        String dateFormatted = fmt.format(calendar.getTime());
+        return dateFormatted;
+}
     
     /**
      * Returns the status of the book.
