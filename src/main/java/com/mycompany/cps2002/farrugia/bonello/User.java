@@ -65,20 +65,15 @@ public class User {
                             this.currentlyLoanedBooks.add(book);
                             this.allLoanedBooks.add(book);
 
-                        } catch (OutOfBoundsException e) {
-                            System.err.println("Error in extracting current date.");
+                        } catch (OutOfBoundsException e) {System.err.println("Error in extracting current date.");
                         }
-                    } else {
-                        System.err.println("Book is already loaned out.");
+                    } else {System.err.println("Book is already loaned out.");
                     }
-                } else {
-                    System.err.println("User exceeds maximum loan allowance of 3 books.");
+                } else {System.err.println("User exceeds maximum loan allowance of 3 books.");
                 }
-            } else {
-                System.err.println("User is already currently loaning this book.");
+            } else {System.err.println("User is already currently loaning this book.");
             }
-        } else {
-            System.err.println("User has overdue books in possession.");
+        } else {System.err.println("User has overdue books in possession.");
         }
     }
 
