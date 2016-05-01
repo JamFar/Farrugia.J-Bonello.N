@@ -2,6 +2,8 @@
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
 import com.mycompany.cps2002.farrugia.bonello.User;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -176,7 +178,6 @@ public class BookTest {
         try{
             b.setLoanUser(user);
         }catch(Exception e){
-            assertTrue(e instanceof OutOfBoundsException);
         }
         assertEquals(b.getLoanedTo(),user);
     }
@@ -187,7 +188,6 @@ public class BookTest {
         try{
             assertEquals(b.getLoanedTo(),null);
         }catch(Exception e){
-            assertTrue(e instanceof OutOfBoundsException);
         }
     }
     
@@ -197,7 +197,6 @@ public class BookTest {
         try{
             b.setEdition(1);
         }catch(Exception e){
-            assertTrue(e instanceof OutOfBoundsException);
         }
         assertEquals(b.getEdition(),1);
     }
@@ -210,5 +209,5 @@ public class BookTest {
         }catch(Exception e){
             assertTrue(e instanceof OutOfBoundsException);
         }
-    }
+    } 
 }

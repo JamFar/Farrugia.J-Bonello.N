@@ -122,4 +122,15 @@ public class UserTest {
             assertEquals(1, user.getCurrentlyLoanedBooks().size());
             assertEquals(2, user.getAllLoanedBooks().size());
     }
+    
+    @Test public void LoanUnavailableBookTest(){
+        User u1 = new User();
+        User u2 = new User();
+        Book b1 = new Book("Hamlet");
+        u1.loanBook(b1);
+        u1.loanBook(b1);
+        assertEquals(u1.getCurrentlyLoanedBooks().size(),1);
+        assertEquals(u2.getCurrentlyLoanedBooks().size(),0);
+    
+    }
 }
