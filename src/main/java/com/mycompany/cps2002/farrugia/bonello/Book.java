@@ -169,10 +169,12 @@ public class Book{
     Only used for testing purposes
     */
     public static String format(GregorianCalendar calendar){
-        SimpleDateFormat fmt = new SimpleDateFormat("dd MMM yyyy");
-        fmt.setCalendar(calendar);
-        String dateFormatted = fmt.format(calendar.getTime());
-        return dateFormatted;
+        
+            SimpleDateFormat fmt = new SimpleDateFormat("dd MMM yyyy");
+            fmt.setCalendar(calendar);
+            String dateFormatted = fmt.format(calendar.getTime());
+            return dateFormatted;
+           
 }
     
     /**

@@ -230,4 +230,24 @@ public class BookTest {
         }catch(Exception e){
         }
     }
+    
+    @Test
+    public void format_test_success(){
+        Book b = new Book("Format tests");
+        try{
+            b.setLoanDate(2017, 11, 10);
+            assertEquals(b.format(b.getLatestTimeStamp()),"10 Dec 2017");
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    @Test
+    public void format_test_fail(){
+        Book b1 = new Book("Empty setLoanDate");
+        try{
+            Book.format(b1.getLatestTimeStamp());
+        }catch(Exception e){
+            assertTrue(e instanceof NullPointerException);
+        }
+    }
 }
