@@ -150,7 +150,6 @@ public class UserTest {
     
     @Test public void OverdueBookTest(){
         User u1 = new User();
-        User u2 = new User();
         Book b1 = new Book("Hamlet");
         try{
             Assert.assertTrue(u1.getOverdue().isEmpty());

@@ -2,10 +2,9 @@
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.OutOfBoundsException;
 import com.mycompany.cps2002.farrugia.bonello.User;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -210,4 +209,17 @@ public class BookTest {
             assertTrue(e instanceof OutOfBoundsException);
         }
     } 
+    
+    @Test
+    public void getTimeStamps_test(){
+        Book b = new Book("Programming for dummies");
+        try{
+           Assert.assertTrue(b.getTimeStamps().isEmpty());
+           User u1 = new User();
+           b.setLoanUser(u1);
+           b.setLoanDate(2016, 10, 10);
+           assertEquals(b.getTimeStamps().size(),1);
+        }catch(Exception e){
+        }
+    }
 }
