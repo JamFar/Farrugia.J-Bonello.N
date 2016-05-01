@@ -50,9 +50,11 @@ public class Library {
             }
         }
     }
-    
     public Catalogue getCatalogue(){
         return catalogue;
+    }
+    public ArrayList<User> getUsers(){
+        return users;
     }
     public ArrayList<User> getUsers(){
         return users;
