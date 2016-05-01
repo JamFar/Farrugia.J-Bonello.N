@@ -67,13 +67,17 @@ public class UserTest {
         user.loanBook(b1);
         user.loanBook(b1);
         Assert.assertTrue(user.getCurrentlyLoanedBooks().size() == 1);
+        Assert.assertEquals(2,user.getAllLoanedBooks().size());
         user2.loanBook(b1);
         Assert.assertTrue(user2.getCurrentlyLoanedBooks().isEmpty());
+        Assert.assertEquals(0,user2.getAllLoanedBooks().size());
+        //Assert.assertTrue(user2.getAllLoanedBooks().size() == 1);
         Book b2 = new Book("Some Book");
         user2.loanBook(b2);
         Assert.assertEquals(1, user2.getCurrentlyLoanedBooks().size());
         user2.loanBook(b2);
         Assert.assertEquals(1, user2.getCurrentlyLoanedBooks().size());
+        Assert.assertEquals(1,user2.getAllLoanedBooks().size());
         
         User u3 = new User();
         Book b3 = new Book("Another Book");
