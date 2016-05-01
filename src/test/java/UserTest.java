@@ -179,4 +179,14 @@ public class UserTest {
         }catch(OutOfBoundsException e){
         }
     }
+    @Test
+    public void invalidDate(){
+        User u1 = new User();
+        Book b1 = new Book("abc");
+        try{
+            b1.setLoanDate(1231, -1, 123);
+        }catch(OutOfBoundsException e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
 }

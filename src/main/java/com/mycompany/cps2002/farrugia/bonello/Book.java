@@ -93,9 +93,9 @@ public class Book{
         if((year >= 0 && year <= thisYear) && (month >= 0 && month < 12) && (day > 0 && day <= 31)){
             GregorianCalendar date = new GregorianCalendar(year, month, day);
             this.timeStamps.add(date);
-        }else{
+        }/*else{
             throw new OutOfBoundsException();
-        }
+        }*/
     }
     
     /**
