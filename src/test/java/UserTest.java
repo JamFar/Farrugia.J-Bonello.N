@@ -108,6 +108,16 @@ public class UserTest {
         }catch(OutOfBoundsException e){    
         }
     }
+    @Test public void LoanCorrectDateTest(){
+        try{
+            User u1 = new User();
+            Book b = new Book("Mein Kampf");
+            u1.loanBook(b);
+            b.setLoanDate(2016, 11, 11);
+            assertEquals(1, u1.getCurrentlyLoanedBooks().size());    
+        }catch(OutOfBoundsException e){
+        }
+        }  
     
     @Test
     public void getAllLoanedTest(){
