@@ -169,6 +169,28 @@ public class BookTest {
         }
     }
     
+    @Test public void loanedTo(){
+        Book b = new Book("Spiderman");
+        boolean exceptionThrown = false;
+        User user = new User();
+        try{
+            b.setLoanUser(user);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+        assertEquals(b.getLoanedTo(),user);
+    }
+    
+    @Test public void loanedTo_false(){
+        Book b = new Book("Superman");
+        boolean exceptionThrown = false;
+        try{
+            assertEquals(b.getLoanedTo(),null);
+        }catch(Exception e){
+            assertTrue(e instanceof OutOfBoundsException);
+        }
+    }
+    
     @Test
     public void getEdition_correct(){
         Book b = new Book("The Maze Runner");
