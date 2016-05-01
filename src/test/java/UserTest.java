@@ -147,4 +147,18 @@ public class UserTest {
         assertEquals(u2.getCurrentlyLoanedBooks().size(),0);
     
     }
+    
+    @Test public void OverdueBookTest(){
+        User u1 = new User();
+        User u2 = new User();
+        Book b1 = new Book("Hamlet");
+        try{
+            Assert.assertTrue(u1.getOverdue().isEmpty());
+            u1.loanBook(b1);
+            b1.setLoanUser(u1);
+            b1.setLoanDate(2015, 10, 10);
+            Assert.assertFalse(u1.getOverdue().isEmpty());
+        }catch(OutOfBoundsException e){
+        }
+    }
 }
