@@ -68,12 +68,22 @@ public class User {
                         } catch (OutOfBoundsException e) {System.err.println("Error in extracting current date.");
                         }
                     } else {System.err.println("Book is already loaned out.");
+                    System.err.println("Book is already loaned out.");
                     }
                 } else {System.err.println("User exceeds maximum loan allowance of 3 books.");
+                System.err.println("User exceeds maximum loan allowance of 3 books.");
+                System.err.println("User exceeds maximum loan allowance of 3 books.");
                 }
             } else {System.err.println("User is already currently loaning this book.");
+            System.err.println("User is already currently loaning this book.");
+            System.err.println("User is already currently loaning this book.");
+            System.err.println("User is already currently loaning this book.");
             }
         } else {System.err.println("User has overdue books in possession.");
+        System.err.println("User has overdue books in possession.");
+        System.err.println("User has overdue books in possession.");
+        System.err.println("User has overdue books in possession.");
+        System.err.println("User has overdue books in possession.");
         }
     }
 
