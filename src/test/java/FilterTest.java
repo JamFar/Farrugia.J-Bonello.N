@@ -166,4 +166,13 @@ public class FilterTest {
         assertEquals(0, bf.search(c.getAllBooks()).size());
         c.clear();
     }
+    
+    @Test
+    public void ValueOf_test() {
+        Catalogue c = Catalogue.getInstance();
+        Book b1 = new Book("Book 1");
+        b1.setGenre(Genre.ADVENTURE);
+        c.addBook(b1);
+        assertEquals(Genre.ADVENTURE, b1.getGenre());
+    }
 }
