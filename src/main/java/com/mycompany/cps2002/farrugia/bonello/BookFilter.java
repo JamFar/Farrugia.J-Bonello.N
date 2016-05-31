@@ -19,18 +19,30 @@ public class BookFilter extends Filter{
         return filteredList;
     }
     
-    public Filter searchFilter(Filter filter){
+    public boolean isDuplicate(Filter filter){
         for(Filter ftr : appliedFilters){
-            if(ftr)
+            if(ftr.getType().equals(filter.getType())){
+                return true;
+            }
         }
+        return false;
     }
     
     public void insertFilter(Filter filter){
-        appliedFilters.add(filter);
+        if(!isDuplicate(filter)){
+            appliedFilters.add(filter);
+        }else{
+            System.err.println(filter.getType()+" filter already exists.");
+        }
     }
     
     public void removeFilter(Filter filter){
-        
+        for(Filter ftr : appliedFilters){
+            if(ftr == filter){
+                appliedFilters.remove(ftr);
+            }
+        }
+        System.err.println("No such filter applied.");
     }
     
 }
