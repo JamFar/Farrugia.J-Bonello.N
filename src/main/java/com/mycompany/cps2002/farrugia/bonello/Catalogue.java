@@ -34,49 +34,4 @@ public class Catalogue {
     public ArrayList<Book> getAllBooks(){
         return stock;
     }
-    
-    /**
-     * Returns a list of all the books with title "title".
-     * @param title The title of the book
-     * @return A list of all books with the title "title".
-     */
-    public ArrayList<Book> searchByTitle(String title){
-        ArrayList<Book> result = new ArrayList<Book>();
-        for(Book book : stock){
-            if((book.getTitle().toLowerCase()).contains(title.toLowerCase())){
-                result.add(book);
-            }
-        }
-        return result;
-    }
-    
-    /**
-     * Returns a list of all the books with genre "genre".
-     * @param genre The genre of the book
-     * @return A list of all books with the genre "genre".
-     */
-    public ArrayList<Book> searchByGenre(Genre genre){
-        ArrayList<Book> result = new ArrayList<Book>();
-        for(Book book : stock){
-            if(genre.toString().equals(book.getGenre().toString())){
-                result.add(book);
-            }
-        }
-        return result;
-    }
-    
-    /**
-     * Returns a list of all the books with year of publication "yop".
-     * @param yop The year of publication of the book
-     * @return A list of all books with the year of publication "yop".
-     */
-    public ArrayList<Book> searchByYOP(int yop){
-        ArrayList<Book> result = new ArrayList<Book>();
-        for(Book book : stock){
-            if(yop == book.getYop()){
-                result.add(book);
-            }
-        }
-        return result;
-    }
 }

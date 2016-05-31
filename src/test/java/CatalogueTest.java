@@ -58,15 +58,6 @@ public class CatalogueTest {
         c.addBook(b2);
         c.addBook(b3);
         c.addBook(b4);
-        assertEquals(1, c.searchByTitle("Sorcerer").size());
-        assertEquals(2, c.searchByTitle("of").size());
-        assertEquals(0, c.searchByTitle("something").size());
-        assertEquals(2, c.searchByGenre(Genre.BIOGRAPHY).size());
-        assertEquals(1, c.searchByGenre(Genre.ADVENTURE).size());
-        assertEquals(0, c.searchByGenre(Genre.UNKNOWN).size());
-        assertEquals(2, c.searchByYOP(1890).size());
-        assertEquals(1, c.searchByYOP(2016).size());
-        assertEquals(0, c.searchByYOP(12).size());
     }
 
     @Test

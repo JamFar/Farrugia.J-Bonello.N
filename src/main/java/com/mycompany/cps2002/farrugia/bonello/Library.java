@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Library {
     
     private final ArrayList<User> users;
-    private Catalogue catalogue;
+    private final Catalogue catalogue;
     
     public Library(){
         users = new ArrayList<User>();
