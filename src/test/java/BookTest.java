@@ -190,6 +190,8 @@ public class BookTest {
         User u2 = new User();
         b.setLoanUser(u1);
 
+        assertEquals(b.getLatestTimeStamp(), null);
+        
         b.setLoanDate(2016, 10, 10);
         SimpleDateFormat fmt = new SimpleDateFormat("dd MMM yyyy");
         String dateFormatted = fmt.format(b.getLatestTimeStamp().getTime());
