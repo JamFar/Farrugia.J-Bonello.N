@@ -34,4 +34,8 @@ public class Catalogue {
     public ArrayList<Book> getAllBooks(){
         return stock;
     }
+    
+    public void clear(){
+        stock.clear();
+    }
 }
