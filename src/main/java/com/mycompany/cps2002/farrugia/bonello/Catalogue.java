@@ -9,10 +9,18 @@ import java.util.ArrayList;
  */
 public class Catalogue {
     
+    private static Catalogue instance = null;
     private ArrayList<Book> stock;
     
-    public Catalogue(){
+    private Catalogue(){
         stock = new ArrayList<Book>();
+    }
+    
+    public static Catalogue getInstance(){
+        if(instance == null){
+            instance = new Catalogue();
+        }
+        return instance;
     }
     
     public void addBook(Book book){

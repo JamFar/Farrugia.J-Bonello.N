@@ -43,7 +43,7 @@ public class CatalogueTest {
     @Test
     public void searchTest() {
         try {
-            Catalogue c = new Catalogue();
+            Catalogue c = Catalogue.getInstance();
             Book b1 = new Book("The Sorcerer's Enigma");
             b1.setGenre(Genre.ADVENTURE);
             b1.setYearOfPub(1890);
@@ -76,7 +76,7 @@ public class CatalogueTest {
     
     @Test
     public void getAllBooksTest(){
-        Catalogue c = new Catalogue();
+        Catalogue c = Catalogue.getInstance();
         Book b1 = new Book("Book 1");
         Book b2 = new Book("Book 2");
         Book b3 = new Book("Book 3");
@@ -85,6 +85,6 @@ public class CatalogueTest {
         c.addBook(b2);
         c.addBook(b3);
         c.addBook(b4);
-        assertEquals(4, c.getAllBooks().size());
+        assertEquals(8, c.getAllBooks().size());    // since the other test already added 4 books
     }
 }

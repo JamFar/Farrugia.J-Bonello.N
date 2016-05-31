@@ -14,7 +14,7 @@ public class Library {
     
     public Library(){
         users = new ArrayList<User>();
-        catalogue = new Catalogue();
+        catalogue = Catalogue.getInstance();
     }
     
     public boolean userExists(User user){
