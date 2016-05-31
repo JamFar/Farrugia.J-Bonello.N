@@ -5,10 +5,14 @@ import java.util.ArrayList;
 public abstract class Filter {
     
     public abstract ArrayList<Book> search(ArrayList<Book> books);
+    protected FilterType type;  
     
-    public void insertFilter(Filter filter){        
+    public String getType(){
+        switch(type){
+            case YOP: return "YOP";
+            case TITLE: return "TITLE";
+            case GENRE: return "GENRE";
+            default: return "NONE";
+        }
     }
-    
-    public void removeFilter(Filter filter){        
-    }    
 }

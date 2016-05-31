@@ -8,6 +8,7 @@ public class TitleFilter extends Filter{
     
     public TitleFilter(String title){
         this.title = title;
+        this.type = FilterType.TITLE;
     }
 
     @Override

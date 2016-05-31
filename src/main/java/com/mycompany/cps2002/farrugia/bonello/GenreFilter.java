@@ -8,6 +8,7 @@ public class GenreFilter extends Filter{
     
     public GenreFilter(Genre genre){
         this.genre = genre;
+        this.type = FilterType.GENRE;
     }
     
     @Override

@@ -8,6 +8,7 @@ public class YOPFilter extends Filter{
     
     public YOPFilter(int yop){
         this.yop = yop;
+        this.type = FilterType.YOP;
     }
 
     @Override
