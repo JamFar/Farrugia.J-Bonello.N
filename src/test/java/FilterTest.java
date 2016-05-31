@@ -2,6 +2,7 @@
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.BookFilter;
 import com.mycompany.cps2002.farrugia.bonello.Catalogue;
+import com.mycompany.cps2002.farrugia.bonello.FilterType;
 import com.mycompany.cps2002.farrugia.bonello.Genre;
 import com.mycompany.cps2002.farrugia.bonello.GenreFilter;
 import com.mycompany.cps2002.farrugia.bonello.TitleFilter;
@@ -173,6 +174,6 @@ public class FilterTest {
         Book b1 = new Book("Book 1");
         b1.setGenre(Genre.ADVENTURE);
         c.addBook(b1);
-        assertEquals(Genre.ADVENTURE, b1.getGenre());
+        assertEquals(FilterType.GENRE, FilterType.valueOf("GENRE"));
     }
 }
