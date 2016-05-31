@@ -136,4 +136,34 @@ public class FilterTest {
         assertEquals(0, bf.search(c.getAllBooks()).size());
         c.clear();
     }
+    @Test
+    public void Remove_Filter_Test() {
+        Catalogue c = Catalogue.getInstance();
+        Book b1 = new Book("Murder on the MotorBoats");
+        Book b2 = new Book("Harry Potter");
+        Book b3 = new Book("Drawing 101");
+        Book b4 = new Book("Painting 101");
+        b1.setYearOfPub(1972);
+        b2.setYearOfPub(1996);
+        b3.setYearOfPub(2016);
+        b4.setYearOfPub(2011);
+        b1.setGenre(Genre.ADVENTURE);
+        b2.setGenre(Genre.ADVENTURE);
+        b3.setGenre(Genre.ADVENTURE);
+        c.addBook(b1);
+        c.addBook(b2);
+        c.addBook(b3);
+        c.addBook(b4);
+        BookFilter bf = new BookFilter();
+        bf.insertFilter(new TitleFilter("murder"));
+        bf.insertFilter(new YOPFilter(1973));
+        assertEquals(0, bf.search(c.getAllBooks()).size());
+        
+        GenreFilter genre = new GenreFilter(Genre.ADVENTURE);
+        bf.insertFilter(genre);
+        assertEquals(3, bf.search(c.getAllBooks()).size());
+        bf.removeFilter(genre);
+        assertEquals(0, bf.search(c.getAllBooks()).size());
+        c.clear();
+    }
 }

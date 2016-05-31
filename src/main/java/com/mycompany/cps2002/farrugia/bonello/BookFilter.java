@@ -37,11 +37,14 @@ public class BookFilter extends Filter{
     }
     
     public void removeFilter(Filter filter){
+        ArrayList<Filter> remove = new ArrayList<Filter>();
         for(Filter ftr : appliedFilters){
             if(ftr == filter){
-                appliedFilters.remove(ftr);
+                //appliedFilters.remove(ftr);
+                remove.add(ftr);
             }
         }
+        appliedFilters.removeAll(remove);
         System.err.println("No such filter applied.");
     }
     
