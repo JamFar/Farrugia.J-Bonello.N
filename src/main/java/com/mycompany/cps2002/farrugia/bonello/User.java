@@ -52,7 +52,6 @@ public class User {
                 if (this.currentlyLoanedBooks.size() < 3) {
                     if (!book.getLoanedStatus()) {
 
-                        try {
                             int year = Calendar.getInstance().get(Calendar.YEAR);
                             int month = Calendar.getInstance().get(Calendar.MONTH);
                             int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
@@ -63,9 +62,6 @@ public class User {
                             this.currentlyLoanedBooks.add(book);
                             this.allLoanedBooks.add(book);
 
-                        } catch (OutOfBoundsException e) {
-                            System.err.println("Error in extracting current date.");
-                        }
                     } else {
                         System.err.println("Book is already loaned out.");
                     }

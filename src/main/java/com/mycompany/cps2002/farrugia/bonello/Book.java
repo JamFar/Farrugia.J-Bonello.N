@@ -1,7 +1,6 @@
 //Testing Connection
 package com.mycompany.cps2002.farrugia.bonello;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -54,28 +53,26 @@ public class Book{
     /**
      * Sets the year of publication of the book.
      * @param yop The year of publication of the book.
-     * @throws OutOfBoundsException Thrown when the year entered is unreasonable.
      */
-    public void setYearOfPub(int yop) throws OutOfBoundsException{
+    public void setYearOfPub(int yop){
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
         
         if(yop >= 0 && yop <= thisYear){
             this.yop = yop;
         }else{
-            throw new OutOfBoundsException();
+            System.err.println("Out of Bounds.");
         }
     }
     
     /**
      * Sets the edition of the book.
      * @param edition The edition of the book.
-     * @throws OutOfBoundsException Thrown when the edition entered is unreasonable.
      */
-    public void setEdition(int edition) throws OutOfBoundsException{
+    public void setEdition(int edition){
         if(edition >= 0){
             this.edition = edition;
         }else{
-            throw new OutOfBoundsException();
+            System.err.println("Out of Bounds.");
         }
     }
     
@@ -84,18 +81,17 @@ public class Book{
      * @param year  The year the book was loaned.
      * @param month The month of the previously mentioned year.
      * @param day The day of the previously mentioned month.
-     * @throws OutOfBoundsException Thrown when either the year, month or day entered are unreasonable.
      */
-    public void setLoanDate(int year, int month, int day) throws OutOfBoundsException{
+    public void setLoanDate(int year, int month, int day){
         
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
 
         if((year >= 0 && year <= thisYear) && (month >= 0 && month < 12) && (day > 0 && day <= 31)){
             GregorianCalendar date = new GregorianCalendar(year, month, day);
             this.timeStamps.add(date);
-        }/*else{
-            throw new OutOfBoundsException();
-        }*/
+        }else{
+            System.err.println("Out of Bounds.");
+        }
     }
     
     /**
