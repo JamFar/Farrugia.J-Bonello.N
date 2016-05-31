@@ -15,7 +15,7 @@ public class TitleFilter extends Filter{
     public ArrayList<Book> search(ArrayList<Book> books) {
         ArrayList<Book> filteredList = new ArrayList<Book>();
         for(Book current: books){
-           if(current.getTitle().equalsIgnoreCase(title)){
+           if(current.getTitle().toLowerCase().contains(title.toLowerCase())){
                filteredList.add(current);
            }
         }

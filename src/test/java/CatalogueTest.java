@@ -1,7 +1,6 @@
 
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.Catalogue;
-import com.mycompany.cps2002.farrugia.bonello.Genre;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
