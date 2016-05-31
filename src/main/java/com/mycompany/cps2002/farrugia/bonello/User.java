@@ -2,8 +2,6 @@ package com.mycompany.cps2002.farrugia.bonello;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import org.joda.time.Days;
 
 /**
  *
