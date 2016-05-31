@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Catalogue {
     
     private static Catalogue instance = null;
-    private ArrayList<Book> stock;
+    private final ArrayList<Book> stock;
     
     private Catalogue(){
         stock = new ArrayList<Book>();
