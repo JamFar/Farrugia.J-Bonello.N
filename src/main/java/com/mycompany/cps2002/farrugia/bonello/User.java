@@ -7,12 +7,14 @@ import java.util.Calendar;
  *
  * @author Farrugia, Bonello
  */
-public class User {
+public class User extends Observer{
 
     static private int userCount = 0;   // this belongs to the class
     final private int idNum;            // this belongs to the user
     ArrayList<Book> currentlyLoanedBooks;
     ArrayList<Book> allLoanedBooks;
+    
+    ArrayList<LoanTableEntry> LoanTable;
 
     /**
      * User constructor. Initialises a new User with a unique id.
@@ -21,6 +23,7 @@ public class User {
         idNum = userCount++;  // create a unique id number for each user (cannot be changed)
         currentlyLoanedBooks = new ArrayList<Book>();
         allLoanedBooks = new ArrayList<Book>();
+        LoanTable = new ArrayList<LoanTableEntry>();
     }
 
     /**
@@ -64,6 +67,7 @@ public class User {
 
                     } else {
                         System.err.println("Book is already loaned out.");
+                        book.attach(this);
                     }
                 } else {
                     System.err.println("User exceeds maximum loan allowance of 3 books.");
@@ -107,6 +111,20 @@ public class User {
             }
         }
         return overdueBooks;
+    }
+
+    @Override
+    public void update(LoanTableEntry entry) {
+        if(entry.position == 0){
+            if(!entry.book.getLoanedStatus()){
+                System.out.println(entry.book.getTitle()+" has been loaned out to user "+this.idNum+".");
+                loanBook(entry.book);
+                
+            }
+        }else{
+            System.out.println("User "+this.idNum+" position in "+entry.book.getTitle()+" queue is now "+entry.position+".");
+            
+        }
     }
 
 }

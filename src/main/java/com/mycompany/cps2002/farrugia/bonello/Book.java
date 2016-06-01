@@ -22,7 +22,7 @@ public class Book{
     private final ArrayList<GregorianCalendar> timeStamps; // the book's loan dates
     private boolean currentlyLoaned;        // is the book currently being loaned?
     
-    private LoanQueue loanQueue;
+    private final ArrayList<Observer> observerList;
     
     /**
      * Book constructor. Initialises book unique id and sets up timestamp array list.
@@ -34,15 +34,8 @@ public class Book{
         timeStamps = new ArrayList<GregorianCalendar>();
         currentlyLoaned = false;
         genre = Genre.UNKNOWN;
-        loanQueue = new LoanQueue();
-    }
-    
-    public void addUser(User interestedUser){
-        loanQueue.addUser(interestedUser);
-    }
-    
-    public User popUser(){
-        return loanQueue.popUser();
+        
+        observerList = new ArrayList<Observer>();
     }
     
     /**
@@ -180,5 +173,19 @@ public class Book{
         return currentlyLoaned;
     }
     
+    public void attach(Observer o){
+        this.observerList.add(o);
+    }
     
+    public void detach(Observer o){
+        this.observerList.remove(o);
+    }
+    
+    public void _notify(){
+        int pos = 0;
+        for(Observer o : observerList){
+            o.update(new LoanTableEntry(this, pos));
+            pos++;
+        }
+    }
 }

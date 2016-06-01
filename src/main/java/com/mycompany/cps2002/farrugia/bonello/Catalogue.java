@@ -38,4 +38,8 @@ public class Catalogue {
     public void clear(){
         stock.clear();
     }
+    
+    public ArrayList<Book> searchForBooks(Filter bookFilter){
+        return bookFilter.search(stock);
+    }
 }
