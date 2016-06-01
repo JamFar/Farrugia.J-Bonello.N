@@ -1,5 +1,6 @@
 
 import com.mycompany.cps2002.farrugia.bonello.Book;
+import com.mycompany.cps2002.farrugia.bonello.LoanTableEntry;
 import com.mycompany.cps2002.farrugia.bonello.User;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -191,5 +192,19 @@ public class UserTest {
         System.setErr(new PrintStream(errContent));
         b1.setLoanDate(1231, -1, 123);
         assertEquals("Out of Bounds." + System.getProperty("line.separator"), errContent.toString());
+    }
+    
+    @Test
+    public void update(){
+        User u1 = new User();
+        User u2 = new User();
+        Book b1 = new Book("The book");
+        LoanTableEntry table = new LoanTableEntry(b1, 0);
+        u1.update(table);
+        u2.update(table);
+        assertEquals(b1.getLoanedTo(),u1);
+        u1.returnBook(b1);
+        u2.update(table);
+        assertEquals(b1.getLoanedTo(),u2);
     }
 }
