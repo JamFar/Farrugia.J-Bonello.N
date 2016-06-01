@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 public abstract class Filter {
     
-    public abstract ArrayList<Book> search(ArrayList<Book> books);
-    protected FilterType type;  
+    protected abstract ArrayList<Book> search(ArrayList<Book> books);
+    protected FilterType type = FilterType.NONE;  
     
     public String getType(){
         switch(type){
             case YOP: return "YOP";
             case TITLE: return "TITLE";
-            default: return "GENRE";
+            case GENRE: return "GENRE";
+            case COMPOSITE: return "COMPOSITE";
+            default: return "NONE";
         }
     }
 }

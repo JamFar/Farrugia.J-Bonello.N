@@ -2,7 +2,6 @@
 import com.mycompany.cps2002.farrugia.bonello.Book;
 import com.mycompany.cps2002.farrugia.bonello.BookFilter;
 import com.mycompany.cps2002.farrugia.bonello.Catalogue;
-import com.mycompany.cps2002.farrugia.bonello.Filter;
 import com.mycompany.cps2002.farrugia.bonello.FilterType;
 import com.mycompany.cps2002.farrugia.bonello.Genre;
 import com.mycompany.cps2002.farrugia.bonello.GenreFilter;
@@ -93,6 +92,13 @@ public class FilterTest {
         bf.insertFilter(new YOPFilter(1972));
         assertEquals("Book 1", bf.search(c.getAllBooks()).get(0).getTitle());
         c.clear();
+    }
+    
+    @Test
+    public void NONE_Test() {
+        Catalogue c = Catalogue.getInstance();
+        BookFilter bf = new BookFilter();
+        assertEquals("NONE", bf.getType());
     }
     
     @Test
