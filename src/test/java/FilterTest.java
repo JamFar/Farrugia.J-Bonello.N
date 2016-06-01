@@ -95,10 +95,31 @@ public class FilterTest {
     }
     
     @Test
-    public void NONE_Test() {
+    public void COMPISITE_Test() {
         Catalogue c = Catalogue.getInstance();
         BookFilter bf = new BookFilter();
-        assertEquals("NONE", bf.getType());
+        assertEquals("COMPOSITE", bf.getType());
+    }
+    
+    @Test
+    public void TITLE_Test() {
+        Catalogue c = Catalogue.getInstance();
+        TitleFilter bf = new TitleFilter("Book");
+        assertEquals("TITLE", bf.getType());
+    }
+    
+    @Test
+    public void GENRE_Test() {
+        Catalogue c = Catalogue.getInstance();
+        GenreFilter bf = new GenreFilter(Genre.ACTION);
+        assertEquals("GENRE", bf.getType());
+    }
+    
+    @Test
+    public void YOP_Filter_Test() {
+        Catalogue c = Catalogue.getInstance();
+        YOPFilter bf = new YOPFilter(1972);
+        assertEquals("YOP", bf.getType());
     }
     
     @Test
@@ -178,10 +199,10 @@ public class FilterTest {
     
     @Test
     public void ValueOf_test() {
-        Catalogue c = Catalogue.getInstance();
-        Book b1 = new Book("Book 1");
-        b1.setGenre(Genre.ADVENTURE);
-        c.addBook(b1);
         assertEquals(FilterType.GENRE, FilterType.valueOf("GENRE"));
+        assertEquals(FilterType.YOP, FilterType.valueOf("YOP"));
+        assertEquals(FilterType.TITLE, FilterType.valueOf("TITLE"));
+        assertEquals(FilterType.COMPOSITE, FilterType.valueOf("COMPOSITE"));
+        assertEquals(FilterType.NONE, FilterType.valueOf("NONE"));
     }
 }

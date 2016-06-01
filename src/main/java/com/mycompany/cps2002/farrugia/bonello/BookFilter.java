@@ -7,7 +7,7 @@ public class BookFilter extends Filter{
     ArrayList<Filter> appliedFilters = new ArrayList<Filter>();
     
     public BookFilter(){
-        
+        type = FilterType.COMPOSITE;
     }
     
     @Override
