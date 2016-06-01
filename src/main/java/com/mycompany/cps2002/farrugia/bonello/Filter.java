@@ -11,8 +11,7 @@ public abstract class Filter {
         switch(type){
             case YOP: return "YOP";
             case TITLE: return "TITLE";
-            case GENRE: return "GENRE";
-            default: return "NONE";
+            default: return "GENRE";
         }
     }
 }
