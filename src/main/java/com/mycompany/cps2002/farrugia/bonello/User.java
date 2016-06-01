@@ -97,6 +97,7 @@ public class User extends Observer{
             book.setLoanedStatus(false);
             book.setLoanUser(null);
             this.currentlyLoanedBooks.remove(book);
+            book.detach(this);
         } else {
             System.err.println("User does not currently have this book.");
         }
@@ -123,16 +124,15 @@ public class User extends Observer{
      */
     @Override
     public void update(LoanTableEntry entry) {
-        if(entry.position == 0){
-            if(!entry.book.getLoanedStatus()){
-                System.out.println(entry.book.getTitle()+" has been loaned out to user "+this.idNum+".");
-                loanBook(entry.book);
-                
+        for(int i=0; i<LoanTable.size(); i++){
+            if(LoanTable.get(i).book.getBookId() == entry.book.getBookId()){
+                LoanTable.set(i, entry);
+                System.out.println("User "+this.idNum+" is in position "+entry.position+" in queue for book \""+entry.book.getTitle()+"\".");
+                return;
             }
-        }else{
-            System.out.println("User "+this.idNum+" position in "+entry.book.getTitle()+" queue is now "+entry.position+".");
-            
         }
+        LoanTable.add(entry);
+        System.out.println("User "+this.idNum+" is in position "+entry.position+" in queue for book \""+entry.book.getTitle()+"\".");
     }
 
 }
