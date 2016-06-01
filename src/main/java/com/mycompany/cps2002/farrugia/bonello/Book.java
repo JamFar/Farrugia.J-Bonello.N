@@ -22,6 +22,8 @@ public class Book{
     private final ArrayList<GregorianCalendar> timeStamps; // the book's loan dates
     private boolean currentlyLoaned;        // is the book currently being loaned?
     
+    private LoanQueue loanQueue;
+    
     /**
      * Book constructor. Initialises book unique id and sets up timestamp array list.
      * @param title The title of the book.
@@ -32,6 +34,15 @@ public class Book{
         timeStamps = new ArrayList<GregorianCalendar>();
         currentlyLoaned = false;
         genre = Genre.UNKNOWN;
+        loanQueue = new LoanQueue();
+    }
+    
+    public void addUser(User interestedUser){
+        loanQueue.addUser(interestedUser);
+    }
+    
+    public User popUser(){
+        return loanQueue.popUser();
     }
     
     /**

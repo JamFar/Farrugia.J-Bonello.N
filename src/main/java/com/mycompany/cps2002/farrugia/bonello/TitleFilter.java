@@ -20,7 +20,5 @@ public class TitleFilter extends Filter{
            }
         }
         return filteredList;
-    }
-    
-    
+    }    
 }
