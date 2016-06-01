@@ -143,6 +143,16 @@ public class Book{
     public String getTitle() {
         return title;
     }
+    
+    /**
+     * Returns the ID of the book.
+     * @return The book ID.
+     */
+    public int getBookId() {
+        return bookId;
+    }
+    
+    
 
     /**
      * Returns the all the dates when the book was loaned.
@@ -176,6 +186,7 @@ public class Book{
      */
     public void attach(Observer o){
         this.observerList.add(o);
+        o.update(new LoanTableEntry(this, observerList.size()));
     }
     /**
      * Removes an observer form the observerList
@@ -183,12 +194,13 @@ public class Book{
      */
     public void detach(Observer o){
         this.observerList.remove(o);
+        _notify();
     }
     /**
      * Notifies all observers of any changes in position
      */
     public void _notify(){
-        int pos = 0;
+        int pos = 1;
         for(Observer o : observerList){
             o.update(new LoanTableEntry(this, pos));
             pos++;
