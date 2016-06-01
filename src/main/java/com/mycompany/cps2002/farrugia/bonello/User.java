@@ -127,7 +127,13 @@ public class User extends Observer{
         for(int i=0; i<LoanTable.size(); i++){
             if(LoanTable.get(i).book.getBookId() == entry.book.getBookId()){
                 LoanTable.set(i, entry);
-                System.out.println("User "+this.idNum+" is in position "+entry.position+" in queue for book \""+entry.book.getTitle()+"\".");
+                if(entry.position != 0){
+                    System.out.println("User "+this.idNum+" is in position "+entry.position+" in queue for book \""+entry.book.getTitle()+"\".");
+                }else{
+                    System.out.println("book \""+entry.book.getTitle()+"\" is now available for loan to user "+this.idNum);
+                    this.loanBook(entry.book);
+                    LoanTable.remove(LoanTable.get(i));
+                }
                 return;
             }
         }

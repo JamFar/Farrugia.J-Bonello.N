@@ -193,14 +193,14 @@ public class Book{
      * @param o Observer to removed from the list
      */
     public void detach(Observer o){
-        this.observerList.remove(o);
         _notify();
+        this.observerList.remove(o);
     }
     /**
      * Notifies all observers of any changes in position
      */
     public void _notify(){
-        int pos = 1;
+        int pos = 0;
         for(Observer o : observerList){
             o.update(new LoanTableEntry(this, pos));
             pos++;
