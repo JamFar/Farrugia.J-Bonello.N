@@ -1,6 +1,5 @@
 
 import com.mycompany.cps2002.farrugia.bonello.Book;
-import com.mycompany.cps2002.farrugia.bonello.Catalogue;
 import com.mycompany.cps2002.farrugia.bonello.User;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
