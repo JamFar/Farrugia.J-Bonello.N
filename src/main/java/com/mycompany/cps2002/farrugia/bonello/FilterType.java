@@ -4,6 +4,5 @@ public enum FilterType {
     YOP,
     GENRE,
     TITLE,
-    COMPOSITE,
-    NONE
+    COMPOSITE
 }

@@ -203,6 +203,5 @@ public class FilterTest {
         assertEquals(FilterType.YOP, FilterType.valueOf("YOP"));
         assertEquals(FilterType.TITLE, FilterType.valueOf("TITLE"));
         assertEquals(FilterType.COMPOSITE, FilterType.valueOf("COMPOSITE"));
-        assertEquals(FilterType.NONE, FilterType.valueOf("NONE"));
     }
 }
