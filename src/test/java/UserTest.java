@@ -196,15 +196,15 @@ public class UserTest {
     
     @Test
     public void update(){
-        User u1 = new User();
-        User u2 = new User();
-        Book b1 = new Book("The book");
-        LoanTableEntry table = new LoanTableEntry(b1, 0);
-        u1.update(table);
-        u2.update(table);
-        assertEquals(b1.getLoanedTo(),u1);
-        u1.returnBook(b1);
-        u2.update(table);
-        assertEquals(b1.getLoanedTo(),u2);
+        User a = new User();
+        User b = new User();
+        User c = new User();
+        Book b1 = new Book("Hello");
+        b.loanBook(b1);
+        assertEquals(b1.getLoanedTo(),b);
+        a.loanBook(b1);
+        c.loanBook(b1);
+        b.returnBook(b1);
+        assertEquals(b1.getLoanedTo(),a);
     }
 }
