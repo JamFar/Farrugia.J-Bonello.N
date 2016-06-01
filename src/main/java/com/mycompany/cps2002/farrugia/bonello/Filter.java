@@ -10,7 +10,10 @@ public abstract class Filter {
     
     protected abstract ArrayList<Book> search(ArrayList<Book> books);
     protected FilterType type;  // the type of filter used (enum)
-    
+    /**
+     * Returns the type of Filter used from the enum
+     * @return Type of Filter
+     */
     public String getType(){
         switch(type){
             case YOP: return "YOP";

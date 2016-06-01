@@ -17,8 +17,8 @@ public class YOPFilter extends Filter{
 
     /**
      * Searches for any books in "books" that have the title specified in the class-wide variable "yop".
-     * @param books The search space of the method.
-     * @return A smaller or equal sized list of books derived from "books".
+     * @param books The search space of the method. 
+    * @return A smaller or equal sized list of books derived from "books".
      */
     @Override
     public ArrayList<Book> search(ArrayList<Book> books) {

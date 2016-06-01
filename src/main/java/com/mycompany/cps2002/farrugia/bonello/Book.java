@@ -1,4 +1,3 @@
-//Testing Connection
 package com.mycompany.cps2002.farrugia.bonello;
 
 import java.util.ArrayList;
@@ -6,7 +5,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- *
  * @author Farrugia, Bonello
  */
 public class Book{
@@ -172,15 +170,23 @@ public class Book{
     public boolean getLoanedStatus(){
         return currentlyLoaned;
     }
-    
+    /**
+     * Adds an observer to the observerList
+     * @param o Observer to be added to list
+     */
     public void attach(Observer o){
         this.observerList.add(o);
     }
-    
+    /**
+     * Removes an observer form the observerList
+     * @param o Observer to removed from the list
+     */
     public void detach(Observer o){
         this.observerList.remove(o);
     }
-    
+    /**
+     * Notifies all observers of any changes in position
+     */
     public void _notify(){
         int pos = 0;
         for(Observer o : observerList){

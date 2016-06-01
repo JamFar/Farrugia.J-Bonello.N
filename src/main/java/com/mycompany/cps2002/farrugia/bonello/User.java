@@ -28,17 +28,22 @@ public class User extends Observer{
 
     /**
      * Returns the User's unique id.
-     *
      * @return The User's unique id number.
      */
     public int getUserId() {
         return this.idNum;
     }
-
+    /**
+     * Returns the list of this User's currently loaned books
+     * @return List of the User's currently loaned books
+     */
     public ArrayList<Book> getCurrentlyLoanedBooks() {
         return currentlyLoanedBooks;
     }
-
+    /**
+     * Returns the list of all books this User ever loaned 
+     * @return List of all books loaned by this user
+     */
     public ArrayList<Book> getAllLoanedBooks() {
         return allLoanedBooks;
     }
@@ -112,7 +117,10 @@ public class User extends Observer{
         }
         return overdueBooks;
     }
-
+    /**
+     * Updates all Users on their new positions in a queue for a book
+     * @param entry The entry to be updated.
+     */
     @Override
     public void update(LoanTableEntry entry) {
         if(entry.position == 0){
