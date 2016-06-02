@@ -71,14 +71,4 @@ public class CatalogueTest {
         
         c.clear();
     }
-    @Test 
-    public void getBookID_Test(){
-        Catalogue c = Catalogue.getInstance();
-        
-        Book b1 = new Book("First Book");
-        Book b2 = new Book("Book 2");
-        assertEquals(6,b1.getBookId());
-        assertEquals(7,b2.getBookId());
-        c.clear();
-    }
 }

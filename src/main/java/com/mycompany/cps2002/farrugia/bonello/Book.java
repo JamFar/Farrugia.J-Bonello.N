@@ -186,6 +186,7 @@ public class Book{
      */
     public void attach(Observer o){
         this.observerList.add(o);
+        System.out.println("A new observer has been placed on the queue.");
         o.update(new LoanTableEntry(this, observerList.size()));
     }
     /**
@@ -193,7 +194,6 @@ public class Book{
      * @param o Observer to removed from the list
      */
     public void detach(Observer o){
-        _notify();
         this.observerList.remove(o);
     }
     /**
@@ -204,6 +204,10 @@ public class Book{
         for(Observer o : observerList){
             o.update(new LoanTableEntry(this, pos));
             pos++;
+        }
+        // detach the first (0th) member of the queue, as it's his/her turn to loan
+        if(!observerList.isEmpty()){
+            detach(observerList.get(0));
         }
     }
 }

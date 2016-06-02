@@ -72,7 +72,7 @@ public class User extends Observer{
 
                     } else {
                         System.err.println("Book is already loaned out.");
-                        book.attach(this);
+                        book.attach(this);  // attach this user as an observer to the book's queue of observers
                     }
                 } else {
                     System.err.println("User exceeds maximum loan allowance of 3 books.");
@@ -92,12 +92,11 @@ public class User extends Observer{
      * @param book The book to be removed.
      */
     public void returnBook(Book book) {
-
         if (this.currentlyLoanedBooks.contains(book)) {
             book.setLoanedStatus(false);
             book.setLoanUser(null);
             this.currentlyLoanedBooks.remove(book);
-            book.detach(this);
+            book._notify(); // notify all observers of the available loan
         } else {
             System.err.println("User does not currently have this book.");
         }
@@ -119,20 +118,21 @@ public class User extends Observer{
         return overdueBooks;
     }
     /**
-     * Updates all Users on their new positions in a queue for a book
+     * Updates all Users on their new positions in a queue for a book.
      * @param entry The entry to be updated.
      */
     @Override
     public void update(LoanTableEntry entry) {
-        for(int i=0; i<LoanTable.size(); i++){
-            if(LoanTable.get(i).book.getBookId() == entry.book.getBookId()){
-                LoanTable.set(i, entry);
+        for(int i=0; i<LoanTable.size(); i++){  // for all book queues this user is subscribed to...
+            if(LoanTable.get(i).book.getBookId() == entry.book.getBookId()){    // find the one specified in "entry"
+                LoanTable.set(i, entry);    // update it with "entry"
                 if(entry.position != 0){
                     System.out.println("User "+this.idNum+" is in position "+entry.position+" in queue for book \""+entry.book.getTitle()+"\".");
-                }else{
+                }else{                      // if the user was the first in queue, and is now the 0th...
                     System.out.println("book \""+entry.book.getTitle()+"\" is now available for loan to user "+this.idNum);
                     this.loanBook(entry.book);
                     LoanTable.remove(LoanTable.get(i));
+                    // no detaching done here, as this will disrupt the for loop in the _notify method in Book
                 }
                 return;
             }

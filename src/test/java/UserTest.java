@@ -193,18 +193,45 @@ public class UserTest {
         b1.setLoanDate(1231, -1, 123);
         assertEquals("Out of Bounds." + System.getProperty("line.separator"), errContent.toString());
     }
-    
+
     @Test
-    public void update(){
+    public void update() {
         User a = new User();
         User b = new User();
         User c = new User();
         Book b1 = new Book("Hello");
         b.loanBook(b1);
-        assertEquals(b1.getLoanedTo(),b);
+        assertEquals(b1.getLoanedTo(), b);
         a.loanBook(b1);
         c.loanBook(b1);
         b.returnBook(b1);
-        assertEquals(b1.getLoanedTo(),a);
+        assertEquals(b1.getLoanedTo(), a);
+    }
+
+    @Test
+    public void observerTest() {
+        User a = new User();
+        User b = new User();
+        User c = new User();
+        Book b1 = new Book("Hello Work");
+
+        b.loanBook(b1);
+        a.loanBook(b1);
+        assertEquals(b1.getLoanedTo(), b);
+        Assert.assertFalse(a == b1.getLoanedTo());
+
+        b.returnBook(b1);
+        assertEquals(b1.getLoanedTo(), a);
+        Assert.assertFalse(b == b1.getLoanedTo());
+
+        b.loanBook(b1);
+        c.loanBook(b1);
+        a.returnBook(b1);
+        Assert.assertTrue(b == b1.getLoanedTo());
+        Assert.assertFalse(c == b1.getLoanedTo());
+        Assert.assertFalse(a == b1.getLoanedTo());
+
+        b.returnBook(b1);
+        assertEquals(b1.getLoanedTo(), c);
     }
 }
